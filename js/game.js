@@ -59,4 +59,16 @@ class Game {
     filterMissiles() {
         //ToDo remove missiles that leave the screen
     }
+
+    filterInvaders() {
+        //ToDo remove invaders that leave the screen
+    }
+
+    filterHits() {
+        //ToDo detect the invaders that are hit and remove the missile and invader, update this.hitcount which is read by the score function 
+    }
+
+    updateScore() {
+        //ToDO updates the score based on the # hits
+    }
 }

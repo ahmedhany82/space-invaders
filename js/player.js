@@ -5,6 +5,7 @@ class Player {
         this.imageWidth = 100;
         this.x = WIDTH/2;
         this.y = HEIGHT - this.imageHeight;
+        this.lives;  //# of lives to decrement with each hit
     }
 
 
