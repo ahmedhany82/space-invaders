@@ -3,6 +3,7 @@ class Game {
         this.player = new Player();
         this.backgroundimage;
         this.missiles = [];
+        this.invaders = [];
     }
 
     preload() {
@@ -13,10 +14,20 @@ class Game {
     draw() {
         image(this.backgroundimage, 0, 0, WIDTH, HEIGHT);
         this.player.draw();
+        if (frameCount % 180 === 0) {
+            if(this.invaders.length < 10) {   /* Limit invaders by 10 for testing to avoid crashing to be removed after implementing filterInvaders() */
+                this.addInvaders();
+            }
+        }
         for (let missile of this.missiles) {
             missile.draw();
         }        
         this.moveMissiles();
+        for (let invader of this.invaders) {
+            invader.draw();
+        }
+        this.moveInvaders();
+        
     }
 
     handleKey(keyCode) {
@@ -26,8 +37,23 @@ class Game {
     moveMissiles() {
         for(let missile of this.missiles) {
             missile.y -= MISSILE_SPEED;
-            console.log(missile.x, missile.y);
+            //console.log(missile.x, missile.y);
         }   
+    }
+
+    addInvaders() {
+        let x = (Math.floor(Math.random() * WIDTH));
+        let y = 50;
+        let invader = new Invader(x,y);
+        invader.preload();
+        this.invaders.push(invader);
+    }
+
+    moveInvaders() {
+        for(let invader of this.invaders) {
+            invader.y += INVADER_SPEED;
+            //console.log(missile.x, missile.y);
+        }    
     }
 
     filterMissiles() {

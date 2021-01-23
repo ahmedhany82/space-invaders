@@ -14,7 +14,7 @@ class Missile {
     }
 
     draw() {
-        console.log("Missile draw() is called")
+        //console.log("Missile draw() is called")
         image(this.image, this.x, this.y, this.imageHeight, this.imageWidth);
     }
 }
