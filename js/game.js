@@ -109,6 +109,10 @@ class Game {
 
     }
 
+    detectCollision() {
+        //ToDo detects collisions between spaceship and invaders and calls a player function to decrement lives
+    }
+
     updateScore() {
         //ToDO updates the score based on the # hits
     }
