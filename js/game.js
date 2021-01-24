@@ -13,7 +13,7 @@ class Game {
     }
 
     draw() {
-        //1image(this.backgroundimage, 0, 0, WIDTH, HEIGHT);
+        //1image(this.backgroundimage, 0, 0, WIDTH, HEIGHT)
         clear();
         this.backgroundimage.draw();
         this.player.draw();
