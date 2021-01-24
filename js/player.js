@@ -38,7 +38,7 @@ class Player {
     }
 
     fireMissile() {
-        let missile = new Missile(this.x, this.y);
+        let missile = new Missile(this.x + (this.imageWidth / 2) - 10, this.y + (this.imageHeight / 2));
         missile.preload();
         game.missiles.push(missile);  //ToDo: adjust the position to the center of the spaceship
     }
