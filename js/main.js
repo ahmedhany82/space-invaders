@@ -12,11 +12,12 @@ function setup() {
     //let x = 1600;
     //let y = (windowHeight - height) - 50;
     //let y = 130;
-    cnv.position(x, y);
+    cnv.position(x, y); 
 }
 
 function draw() {
     game.draw();
+    game.checkGameOver();
 }
 
 function keyPressed() {

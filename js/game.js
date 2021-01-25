@@ -6,6 +6,7 @@ class Game {
         this.invaders = [];
         this.invaderKilledSound;
         this.missedInvaders = 0;
+        this.gameOverFlag = false;
     }
 
     preload() {
@@ -122,6 +123,14 @@ class Game {
             }
         }
 
+    }
+
+    checkGameOver() {
+        if(this.missedInvaders === 20 && this.gameOverFlag === false) {
+            noLoop();
+            console.log("Game Over!!");
+            this.gameOverFlag = true;
+        } 
     }
 
     detectCollision() {
