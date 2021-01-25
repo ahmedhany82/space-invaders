@@ -5,6 +5,7 @@ class Game {
         this.missiles = [];
         this.invaders = [];
         this.invaderKilledSound;
+        this.missedInvaders = 0;
     }
 
     preload() {
@@ -88,6 +89,8 @@ class Game {
         this.invaders = this.invaders.filter((invader) => {
 
             if (invader.y > HEIGHT) {
+                this.missedInvaders++;
+                document.querySelector('.missed').querySelector("span").innerText = this.missedInvaders;
                 return false;
             } else {
                 return true;

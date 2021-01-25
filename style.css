@@ -15,20 +15,31 @@ body {
   border: 20px solid rgba(252, 254, 255, 0.637);
 }
 
+.game {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  width: 1200px;
+}
+
 h1 {
   font-size: 3em;
   color: white;
+  margin-left: 50px;
 }
 
-.score h2 {
+.game h2 {
   font-size: 2em;
   color: white;
 }
 
-.game {
+.updated-info {
+  width: 100%;
   display: flex;
-  flex-direction: column;
+  justify-content:space-between;
   align-items: center;
-  text-align: center;
+  
 }
 /**/
