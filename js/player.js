@@ -14,7 +14,9 @@ class Player {
         /* https://www.seekpng.com/ipng/u2q8o0o0a9i1o0t4_free-png-space-ship-png-images-transparent-nave/ */
         this.image = loadImage("images/SeekPng.com_space-ship-png_1581234.png");
         http://www.classicgaming.cc/classics/space-invaders/files/sounds/shoot.zip
-        this.sound = createAudio('Sounds/shoot.wav');
+        //this.sound = createAudio('Sounds/shoot.wav');
+        //https://opengameart.org/content/lasershootingsx
+        this.sound = createAudio('Sounds/laser_shooting_sfx.wav');
     }
 
     draw() {
