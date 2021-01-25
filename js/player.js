@@ -7,6 +7,7 @@ class Player {
         this.y = HEIGHT - this.imageHeight;
         this.lives;  //# of lives to decrement with each hit
         this.sound;
+        this.score = 0;
     }
 
 

@@ -112,6 +112,8 @@ class Game {
                         this.invaderKilledSound.play();
                         this.missiles.splice(i,1);
                         this.invaders.splice(j,1);
+                        this.player.score++;
+                        document.querySelector(".score").querySelector("span").innerText = this.player.score;
                         //ToDo increment score
                     }
             }
