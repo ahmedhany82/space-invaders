@@ -13,6 +13,7 @@ class Game {
         //this.backgroundimage = loadImage('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
         this.backgroundimage.preload();
         this.player.preload();
+        //http://www.classicgaming.cc/classics/space-invaders/files/sounds/invaderkilled.zip
         this.invaderKilledSound = createAudio('Sounds/invaderkilled.wav');
     }
 

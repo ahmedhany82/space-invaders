@@ -1,0 +1,25 @@
+body {
+    /* font-family: "Spartan", sans-serif; */
+    /*background-color: #c8dad3;*/
+    background-image: url("images/wallpaper-space-invaders-real-3d-1920x1080.jpg");
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.title {
+    color: var(--bs-white);
+    margin-top: 200px;
+    margin-left: 100px;
+    font-size: 120px;
+}
+
+.btn {
+    width: 30%;
+    position: relative;
+    top: 900px;
+    margin-left: 150px;
+ }
+
+.text {
+   text-align: center;
+}
