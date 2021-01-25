@@ -6,9 +6,12 @@ function preload() {
 
 function setup() {
     let cnv = createCanvas(WIDTH, HEIGHT);
+    cnv.parent('sketch-holder');
     let x = (windowWidth - width) / 2;
-    //let y = (windowHeight - height) / 2;
-    let y = (windowHeight - height) - 10;
+    let y = (windowHeight - height) / 2;
+    //let x = 1600;
+    //let y = (windowHeight - height) - 50;
+    //let y = 130;
     cnv.position(x, y);
 }
 
