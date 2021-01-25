@@ -129,7 +129,7 @@ class Game {
     checkGameOver() {
         if(this.missedInvaders === 20 && this.gameOverFlag === false) {
             noLoop();
-            console.log("Game Over!!");
+            window.alert("Game Over!! You missed 20 invaders!!");
             this.gameOverFlag = true;
         } 
     }
