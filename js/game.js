@@ -4,12 +4,14 @@ class Game {
         this.backgroundimage = new Background();
         this.missiles = [];
         this.invaders = [];
+        this.invaderKilledSound;
     }
 
     preload() {
         //this.backgroundimage = loadImage('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
         this.backgroundimage.preload();
         this.player.preload();
+        this.invaderKilledSound = createAudio('Sounds/invaderkilled.wav');
     }
 
     draw() {
@@ -17,7 +19,7 @@ class Game {
         clear();
         this.backgroundimage.draw();
         this.player.draw();
-        if (frameCount % 180 === 0) {
+        if (frameCount % 80 === 0) {
             if(this.invaders.length < 5) {   /* Limit invaders by 10 for testing to avoid crashing to be removed after implementing filterInvaders() */
                 this.addInvaders();
             }
@@ -102,6 +104,7 @@ class Game {
                 
                 if ( Math.abs(missileX - invaderX) < 25 && Math.abs(missileY - invaderY) < 25) {
                     
+                    this.invaderKilledSound.play();
                     this.missiles.splice(i,1);
                     this.invaders.splice(j,1);
                     //ToDo increment score
