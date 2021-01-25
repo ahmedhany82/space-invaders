@@ -6,7 +6,8 @@ class Background {
     }
 
     preload() {
-        this.img = loadImage('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
+        /* source: https://www.pexels.com/photo/cluster-of-stars-1341279/ */
+        this.img = loadImage('images/pexels-photo-1341279.jpeg');
     }
 
     draw() {

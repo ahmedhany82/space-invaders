@@ -51,13 +51,15 @@ class Game {
         let x = (Math.floor(Math.random() * WIDTH));
         let y = 50;
         let invader = new Invader(x,y);
-        invader.preload(Math.floor(Math.random() * 4));
+        invader.preload(Math.floor(Math.random() * 6));
         this.invaders.push(invader);
     }
 
     moveInvaders() {
+        // ToDo create a method in the invaders class to move an invader and call it here in each iteration.
         for(let invader of this.invaders) {
-            invader.y += INVADER_SPEED;
+            //invader.y += INVADER_SPEED;
+            invader.moveInvader();
             //console.log(missile.x, missile.y);
         }    
     }
