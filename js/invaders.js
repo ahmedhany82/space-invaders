@@ -52,6 +52,8 @@ class Invader {
     bounceOffEdges() {
         if( (this.x + this.imageWidth) >= WIDTH || this.x <= 0) {
             this.direction *= -1;
+            this.x += (8*INVADER_SPEED * this.direction); //to prevent getting stuck in the if-condition
+            console.log(this.x, this.y)
             //this.sound.play();
         }
     }
