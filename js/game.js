@@ -51,7 +51,7 @@ class Game {
         let x = (Math.floor(Math.random() * WIDTH));
         let y = 50;
         let invader = new Invader(x,y);
-        invader.preload();
+        invader.preload(Math.floor(Math.random() * 4));
         this.invaders.push(invader);
     }
 
