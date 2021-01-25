@@ -19,10 +19,12 @@ class Game {
         clear();
         this.backgroundimage.draw();
         this.player.draw();
-        if (frameCount % 80 === 0) {
-            if(this.invaders.length < 5) {   /* Limit invaders by 10 for testing to avoid crashing to be removed after implementing filterInvaders() */
-                this.addInvaders();
-            }
+        //console.log(frameCount % 50)
+        if (frameCount %50 === 0) {
+            // if(this.invaders.length < 5) {   /* Limit invaders by 10 for testing to avoid crashing to be removed after implementing filterInvaders() */
+            //      this.addInvaders();
+            //  }
+            this.addInvaders();
         }
         for (let missile of this.missiles) {
             missile.draw();
@@ -32,8 +34,10 @@ class Game {
             invader.draw();
         }
         this.moveInvaders();
+        
         this.filterMissiles();
         this.filterInvaders();
+        
         this.filterHits();
         
     }
@@ -50,7 +54,8 @@ class Game {
     }
 
     addInvaders() {
-        let x = (Math.floor(Math.random() * WIDTH));
+        //let x = (Math.floor(Math.random() * WIDTH));
+        let x = Math.floor(Math.random() * 2) ? (Math.floor(Math.random() * (WIDTH/3))) : (WIDTH*2/3) + (Math.floor(Math.random() * (WIDTH/3)))
         let y = 50;
         let invader = new Invader(x,y);
         invader.preload(Math.floor(Math.random() * 6));
@@ -95,20 +100,20 @@ class Game {
         //ToDo detect the invaders that are hit and remove the missile and invader, update this.hitcount which is read by the score function 
         
             for(let i=0; i<this.missiles.length; i++) {
-            for(let j=0; j<this.invaders.length; j++) {
                 let missileX = this.missiles[i].x + this.missiles[i].imageWidth / 2;
                 let missileY = this.missiles[i].y + this.missiles[i].imageHeight / 2;
 
-                let invaderX = this.invaders[j].x + this.invaders[j].imageWidth / 2;
-                let invaderY = this.invaders[j].y + this.invaders[j].imageHeight / 2;
-                
-                if ( Math.abs(missileX - invaderX) < 25 && Math.abs(missileY - invaderY) < 25) {
+                for(let j=0; j<this.invaders.length; j++) {
+                    let invaderX = this.invaders[j].x + this.invaders[j].imageWidth / 2;
+                    let invaderY = this.invaders[j].y + this.invaders[j].imageHeight / 2;
                     
-                    this.invaderKilledSound.play();
-                    this.missiles.splice(i,1);
-                    this.invaders.splice(j,1);
-                    //ToDo increment score
-                }
+                    if ( Math.abs(missileX - invaderX) < 25 && Math.abs(missileY - invaderY) < 25) {
+                        
+                        this.invaderKilledSound.play();
+                        this.missiles.splice(i,1);
+                        this.invaders.splice(j,1);
+                        //ToDo increment score
+                    }
             }
         }
 

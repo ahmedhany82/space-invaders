@@ -5,6 +5,9 @@ class Invader {
         this.image;
         this.imageHeight = 50;
         this.imageWidth = 50;
+        //this.direction = Math.floor(Math.random() * 2) === 0 ? 1 : -1;
+        this.direction = (this.x >= (WIDTH*2/3))  ? 1 : -1;
+        this.sound;
     }
 
     preload(invader) {
@@ -32,6 +35,7 @@ class Invader {
                 this.image = loadImage("images/magenta_invader.png");
                 break;
         }
+        //this.sound = createAudio("Sounds/shoot.wav");
         //this.image = loadImage("images/SeekPng.com_space-invader-png_1925983.png");
     }
 
@@ -41,5 +45,14 @@ class Invader {
 
     moveInvader() {
         this.y += INVADER_SPEED;
+        this.x += (INVADER_SPEED * this.direction);
+        this.bounceOffEdges();
+    }
+
+    bounceOffEdges() {
+        if( (this.x + this.imageWidth) >= WIDTH || this.x <= 0) {
+            this.direction *= -1;
+            //this.sound.play();
+        }
     }
 }
