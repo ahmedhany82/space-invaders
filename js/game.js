@@ -7,6 +7,7 @@ class Game {
         this.invaderKilledSound;
         this.missedInvaders = 0;
         this.gameOverFlag = false;
+        this.makeVisible = true;
     }
 
     preload() {
@@ -21,9 +22,12 @@ class Game {
         //1image(this.backgroundimage, 0, 0, WIDTH, HEIGHT)
         clear();
         this.backgroundimage.draw();
-        this.player.draw();
+        if(this.makeVisible || frameCount % 2 === 0)
+        {
+            this.player.draw();
+        }
         //console.log(frameCount % 50)
-        if (frameCount %50 === 0) {
+        if (frameCount %20 === 0) {
             // if(this.invaders.length < 5) {   /* Limit invaders by 10 for testing to avoid crashing to be removed after implementing filterInvaders() */
             //      this.addInvaders();
             //  }
