@@ -11,6 +11,7 @@ class Game {
         this.selectedLevel = 1;
         this.invadersSpeed = 5;
         this.playerExplosion;
+        this.decrementLivesFlag = 0;
     }
 
     preload() {
@@ -141,7 +142,7 @@ class Game {
     }
 
     checkGameOver() {
-        if(this.missedInvaders === 50 && this.gameOverFlag === false) {
+        if( (this.missedInvaders === 50 && this.gameOverFlag === false)) {
             noLoop();
             window.alert("Game Over!! You missed 50 invaders!!");
             this.gameOverFlag = true;
@@ -161,14 +162,33 @@ class Game {
                 
                 console.log('Invader Player collision');
                 this.playerExplosion.play();
+            
+                this.decrementLivesFlag = 1;
                 this.makeVisible = 0;
                 /* a timeout for 3 seconds afterwards set the spaceship to fully visible again */
                 setTimeout(()=>{
                     this.makeVisible = 1;
-                }, 3000);
-                
+                }, 2000);
+                if(this.player.lives > 0) {
+                    this.player.lives -= 1;
+                }
+                this.invaders.splice(j,1);
+                console.log("lives : ", this.player.lives);
+                break;
             }
         }
+        
+
+        // if(this.player.lives > 0) {
+        //     if (this.decrementLivesFlag === 1) {
+        //         this.player.lives -= 1;
+        //         this.decrementLivesFlag = 0;
+        //         }
+        // } else {
+        //     //console.log(this.player.lives);
+        //     console.log("Game Over!!!!")
+        // }    
+
     }
 
     updateScore() {
