@@ -1,18 +1,21 @@
 body {
-    display: flex;
-    justify-content: center;
-    flex-direction: column;
-    align-items: center;
-    font-family: "Spartan", sans-serif;
-    /*background-color: #c8dad3;*/
-    background-image: url("images/invaders.png");
-    background-repeat: no-repeat;
-    background-size: cover;
-    /*background-position: right top*/
+  /*display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;*/
+  /*font-family: "Spartan", sans-serif;*/
+  /*background-color: #c8dad3;*/
+  background-image: url("images/invaders.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  /*background-position: right top*/
+  color: white;
 }
 
-#sketch-holder #defaultCanvas0{
-  border: 20px solid rgba(252, 254, 255, 0.637);
+.container {
+  margin-left: 0px;
+  margin-right: 0px;
+  width: 100%;
 }
 
 .game {
@@ -20,26 +23,26 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
-  text-align: center;
-  width: 1200px;
-}
-
-h1 {
-  font-size: 3em;
-  color: white;
-  margin-left: 50px;
-}
-
-.game h2 {
-  font-size: 2em;
-  color: white;
 }
 
 .updated-info {
   width: 100%;
   display: flex;
-  justify-content:space-between;
-  align-items: center;
-  
+  justify-content: space-between;
 }
+
+.radio-controls {
+  margin-top: 150px;
+  width: 50%;
+  font-size: 30px;
+}
+
+.controls {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+
 /**/

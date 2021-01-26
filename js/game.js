@@ -8,6 +8,7 @@ class Game {
         this.missedInvaders = 0;
         this.gameOverFlag = false;
         this.makeVisible = true;
+        this.selectedLevel = 1;
     }
 
     preload() {
@@ -22,12 +23,14 @@ class Game {
         //1image(this.backgroundimage, 0, 0, WIDTH, HEIGHT)
         clear();
         this.backgroundimage.draw();
+
         if(this.makeVisible || frameCount % 2 === 0)
         {
             this.player.draw();
         }
+
         //console.log(frameCount % 50)
-        if (frameCount %20 === 0) {
+        if (frameCount % (Math.floor(50 / this.selectedLevel)) === 0) {
             // if(this.invaders.length < 5) {   /* Limit invaders by 10 for testing to avoid crashing to be removed after implementing filterInvaders() */
             //      this.addInvaders();
             //  }
@@ -46,7 +49,8 @@ class Game {
         this.filterInvaders();
         
         this.filterHits();
-        
+
+        this.checkSelectedLevel();      
     }
 
     handleKey(keyCode) {
@@ -61,9 +65,9 @@ class Game {
     }
 
     addInvaders() {
-        //let x = (Math.floor(Math.random() * WIDTH));
-        let x = Math.floor(Math.random() * 2) ? (Math.floor(Math.random() * (WIDTH/3))) : (WIDTH*2/3) + (Math.floor(Math.random() * (WIDTH/3)))
-        let y = 50;
+        let x = (Math.floor(Math.random() * WIDTH));
+        //let x = Math.floor(Math.random() * 2) ? (Math.floor(Math.random() * (WIDTH/3))) : (WIDTH*2/3) + (Math.floor(Math.random() * (WIDTH/3)))
+        let y = 5;
         let invader = new Invader(x,y);
         invader.preload(Math.floor(Math.random() * 6));
         this.invaders.push(invader);
@@ -131,9 +135,9 @@ class Game {
     }
 
     checkGameOver() {
-        if(this.missedInvaders === 20 && this.gameOverFlag === false) {
+        if(this.missedInvaders === 50 && this.gameOverFlag === false) {
             noLoop();
-            window.alert("Game Over!! You missed 20 invaders!!");
+            window.alert("Game Over!! You missed 50 invaders!!");
             this.gameOverFlag = true;
         } 
     }
@@ -144,5 +148,18 @@ class Game {
 
     updateScore() {
         //ToDO updates the score based on the # hits
+    }
+
+    checkSelectedLevel() {
+        if(document.querySelector('#levelSelector1').checked)
+        {
+            this.selectedLevel = 1;
+        } else {
+            if(document.querySelector('#levelSelector2').checked) {
+                this.selectedLevel = 2;
+            } else {
+                this.selectedLevel = 3;
+            }
+        }
     }
 }

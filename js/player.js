@@ -12,12 +12,19 @@ class Player {
 
 
     preload() {
+
         /* https://www.seekpng.com/ipng/u2q8o0o0a9i1o0t4_free-png-space-ship-png-images-transparent-nave/ */
         this.image = loadImage("images/SeekPng.com_space-ship-png_1581234.png");
+
+        /* https://www.seekpng.com/png/full/337-3370143_spaceship-sprite-png.png */
+        //this.image = loadImage("images/SeekPng.com_spaceship-sprite-png_3370143.png");
+        
+
         http://www.classicgaming.cc/classics/space-invaders/files/sounds/shoot.zip
         //this.sound = createAudio('Sounds/shoot.wav');
         //https://opengameart.org/content/lasershootingsx
         this.sound = createAudio('Sounds/laser_shooting_sfx.wav');
+        console.log("preload is called")
     }
 
     draw() {
@@ -29,12 +36,14 @@ class Player {
         if (keyIsDown(RIGHT_ARROW)) {
             this.moveRight();
         }
+
     }
 
     moveLeft() {
         if(this.x >= SPEED) {
             this.x -= SPEED;
         }
+        
     }
 
     moveRight() {
