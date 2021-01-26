@@ -158,11 +158,12 @@ class Game {
     }
 
     checkGameOver() {
-        if( (this.missedInvaders === 50 && this.gameOverFlag === false)) {
+        if( (this.missedInvaders === 50 || this.player.lives === 0) && this.gameOverFlag === false) {
             //noLoop();
             this.pauseLoop = true;
             //window.alert("Game Over!! You missed 50 invaders!!");
             this.gameOverFlag = true;
+            //window.alert("Game Over!! You missed 50 invaders!!")
         } 
     }
 
