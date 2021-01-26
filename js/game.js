@@ -173,22 +173,11 @@ class Game {
                     this.player.lives -= 1;
                 }
                 this.invaders.splice(j,1);
+                document.querySelector(".lives").querySelector("span").innerText = this.player.lives;
                 console.log("lives : ", this.player.lives);
                 break;
             }
-        }
-        
-
-        // if(this.player.lives > 0) {
-        //     if (this.decrementLivesFlag === 1) {
-        //         this.player.lives -= 1;
-        //         this.decrementLivesFlag = 0;
-        //         }
-        // } else {
-        //     //console.log(this.player.lives);
-        //     console.log("Game Over!!!!")
-        // }    
-
+        }    
     }
 
     updateScore() {
