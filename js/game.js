@@ -10,6 +10,7 @@ class Game {
         this.makeVisible = true;
         this.selectedLevel = 1;
         this.invadersSpeed = 5;
+        this.playerExplosion;
     }
 
     preload() {
@@ -18,6 +19,8 @@ class Game {
         this.player.preload();
         //http://www.classicgaming.cc/classics/space-invaders/files/sounds/invaderkilled.zip
         this.invaderKilledSound = createAudio('Sounds/invaderkilled.wav');
+        http://www.classicgaming.cc/classics/space-invaders/files/sounds/explosion.zip
+        this.playerExplosion = createAudio('Sounds/explosion.wav');
     }
 
     draw() {
@@ -51,7 +54,9 @@ class Game {
         
         this.filterHits();
 
-        this.checkSelectedLevel();      
+        this.checkSelectedLevel();
+        
+        this.detectCollision();
     }
 
     handleKey(keyCode) {
@@ -145,6 +150,25 @@ class Game {
 
     detectCollision() {
         //ToDo detects collisions between spaceship and invaders and calls a player function to decrement lives
+        let playerX = this.player.x + this.player.imageWidth / 2;
+        let playerY = this.player.y + this.player.imageHeight / 2;
+        
+        for(let j=0; j<this.invaders.length; j++) {
+            let invaderX = this.invaders[j].x + this.invaders[j].imageWidth / 2;
+            let invaderY = this.invaders[j].y + this.invaders[j].imageHeight / 2;
+            
+            if ( Math.abs(playerX - invaderX) < 25 && Math.abs(playerY - invaderY) < 25) {
+                
+                console.log('Invader Player collision');
+                this.playerExplosion.play();
+                this.makeVisible = 0;
+                /* a timeout for 3 seconds afterwards set the spaceship to fully visible again */
+                setTimeout(()=>{
+                    this.makeVisible = 1;
+                }, 3000);
+                
+            }
+        }
     }
 
     updateScore() {
