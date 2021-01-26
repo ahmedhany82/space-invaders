@@ -1,5 +1,5 @@
 class Invader {
-    constructor(x,y) {
+    constructor(x,y,speed) {
         this.x = x;
         this.y = y;
         this.image;
@@ -7,7 +7,7 @@ class Invader {
         this.imageWidth = 50;
         //this.direction = Math.floor(Math.random() * 2) === 0 ? 1 : -1;
         this.direction = (this.x >= (WIDTH*2/3))  ? 1 : -1;
-        this.speed = 8;
+        this.speed = speed;
         this.sound;
     }
 
@@ -66,7 +66,7 @@ class Invader {
     bounceAtSetHeight() {
         if(Math.abs(this.y - 450) < 5 ) {
             this.direction *= -1;
-            this.speed -= 1;
+            //this.speed -= 1;
         }
     }
 }

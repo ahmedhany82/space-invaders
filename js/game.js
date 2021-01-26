@@ -9,6 +9,7 @@ class Game {
         this.gameOverFlag = false;
         this.makeVisible = true;
         this.selectedLevel = 1;
+        this.invadersSpeed = 5;
     }
 
     preload() {
@@ -68,7 +69,7 @@ class Game {
         let x = (Math.floor(Math.random() * WIDTH));
         //let x = Math.floor(Math.random() * 2) ? (Math.floor(Math.random() * (WIDTH/3))) : (WIDTH*2/3) + (Math.floor(Math.random() * (WIDTH/3)))
         let y = 5;
-        let invader = new Invader(x,y);
+        let invader = new Invader(x,y,this.invadersSpeed);
         invader.preload(Math.floor(Math.random() * 6));
         this.invaders.push(invader);
     }
@@ -154,11 +155,14 @@ class Game {
         if(document.querySelector('#levelSelector1').checked)
         {
             this.selectedLevel = 1;
+            this.invadersSpeed = 5;
         } else {
             if(document.querySelector('#levelSelector2').checked) {
                 this.selectedLevel = 2;
+                this.invadersSpeed = 8;
             } else {
                 this.selectedLevel = 3;
+                this.invadersSpeed = 10;
             }
         }
     }
