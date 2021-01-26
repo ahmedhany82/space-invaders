@@ -1,5 +1,6 @@
 const game = new Game();
 
+
 function preload() {
     game.preload();
 }
@@ -15,9 +16,19 @@ function setup() {
     //cnv.position(x, y); 
 }
 
+
 function draw() {
-    game.draw();
+    game.draw();  
     game.checkGameOver();
+    console.log("draw is called");
+    console.log(game.pauseLoop);
+    if(game.pauseLoop === false) {
+        loop();
+        console.log("loop path is called")
+    } else {
+        noLoop();
+        console.log("the path with no loop is called")
+    }
 }
 
 function keyPressed() {

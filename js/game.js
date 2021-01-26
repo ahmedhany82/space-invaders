@@ -12,6 +12,7 @@ class Game {
         this.invadersSpeed = 5;
         this.playerExplosion;
         this.decrementLivesFlag = 0;
+        this.pauseLoop = false;
     }
 
     preload() {
@@ -22,6 +23,8 @@ class Game {
         this.invaderKilledSound = createAudio('Sounds/invaderkilled.wav');
         http://www.classicgaming.cc/classics/space-invaders/files/sounds/explosion.zip
         this.playerExplosion = createAudio('Sounds/explosion.wav');
+        //let ele = createAudio('Sounds/spaceinvaders1.mpeg');
+        //ele.play();
     }
 
     draw() {
@@ -62,6 +65,19 @@ class Game {
 
     handleKey(keyCode) {
         if (keyCode === 32) this.player.fireMissile();
+        if ( (keyCode === 13) && (this.gameOverFlag === true) ) {
+            console.log("Enter Key is pressed.")
+            this.invaders = [];
+            this.missedInvaders = 0;
+            document.querySelector('.missed').querySelector("span").innerText = this.missedInvaders;
+            this.player.score = 0;
+            document.querySelector(".score").querySelector("span").innerText = this.player.score;
+            this.player.lives = 3;
+            document.querySelector(".lives").querySelector("span").innerText = this.player.lives;
+            this.pauseLoop = false;
+            this.gameOverFlag = false;
+            loop();
+        }
     }
 
     moveMissiles() {
@@ -143,8 +159,9 @@ class Game {
 
     checkGameOver() {
         if( (this.missedInvaders === 50 && this.gameOverFlag === false)) {
-            noLoop();
-            window.alert("Game Over!! You missed 50 invaders!!");
+            //noLoop();
+            this.pauseLoop = true;
+            //window.alert("Game Over!! You missed 50 invaders!!");
             this.gameOverFlag = true;
         } 
     }
