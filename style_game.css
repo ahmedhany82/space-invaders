@@ -53,5 +53,20 @@ body {
   align-items: center;
 }
 
+.card-body {
+  color: black;
+  font-size: 30px;
+}
 
+.card-body h4 {
+  margin-top: 20px;
+}
+
+.card-body p {
+  margin-top: 20px;
+}
+
+.continue-button {
+  font-size: 25px;
+}
 /**/

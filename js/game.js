@@ -164,6 +164,7 @@ class Game {
             //window.alert("Game Over!! You missed 50 invaders!!");
             this.gameOverFlag = true;
             //window.alert("Game Over!! You missed 50 invaders!!")
+            $('#myLosingModal').modal('show');
         } 
     }
 
