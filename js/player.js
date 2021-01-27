@@ -24,7 +24,7 @@ class Player {
         //this.sound = createAudio('Sounds/shoot.wav');
         //https://opengameart.org/content/lasershootingsx
         this.sound = createAudio('Sounds/laser_shooting_sfx.wav');
-        console.log("preload is called")
+        //console.log("preload is called")
     }
 
     draw() {

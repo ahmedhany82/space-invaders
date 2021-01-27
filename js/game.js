@@ -13,6 +13,8 @@ class Game {
         this.playerExplosion;
         this.decrementLivesFlag = 0;
         this.pauseLoop = false;
+        this.gameDuration = 30; //1 minute
+        this.countDownID;
     }
 
     preload() {
@@ -25,6 +27,7 @@ class Game {
         this.playerExplosion = createAudio('Sounds/explosion.wav');
         //let ele = createAudio('Sounds/spaceinvaders1.mpeg');
         //ele.play();
+        this.countDown(this.gameDuration);
     }
 
     draw() {
@@ -76,6 +79,7 @@ class Game {
             document.querySelector(".lives").querySelector("span").innerText = this.player.lives;
             this.pauseLoop = false;
             this.gameOverFlag = false;
+            this.countDown(this.gameDuration);
             loop();
         }
     }
@@ -164,6 +168,7 @@ class Game {
             //window.alert("Game Over!! You missed 50 invaders!!");
             this.gameOverFlag = true;
             //window.alert("Game Over!! You missed 50 invaders!!")
+            clearInterval(this.countDownID);
             $('#myLosingModal').modal('show');
         } 
     }
@@ -199,8 +204,31 @@ class Game {
         }    
     }
 
-    updateScore() {
-        //ToDO updates the score based on the # hits
+    countDown(duration) {
+        //Modified from https://stackoverflow.com/questions/20618355/the-simplest-possible-javascript-countdown-timer
+        console.log("countDown is called")
+        let timer = duration;
+        let minutes, seconds;
+        //const id = setInterval(() => {
+        this.countDownID = setInterval(() => {
+            minutes = parseInt(timer / 60, 10);
+            seconds = parseInt(timer % 60, 10);
+    
+            minutes = minutes < 10 ? "0" + minutes : minutes;
+            seconds = seconds < 10 ? "0" + seconds : seconds;
+    
+            document.querySelector('.timer').querySelector('span').innerText = minutes + ":" + seconds;
+            //this.displayedTime = minutes + ":" + seconds;
+            timer--;
+    
+            if (timer < 0) {
+                clearInterval(this.countDownID);
+                this.pauseLoop = true; //test
+                this.gameOverFlag = true;
+                document.querySelector('.winscore').innerText = this.player.score;
+                $('#myWinningModal').modal('show');
+            }
+        }, 1000);
     }
 
     checkSelectedLevel() {

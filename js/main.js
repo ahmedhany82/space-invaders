@@ -20,14 +20,10 @@ function setup() {
 function draw() {
     game.draw();  
     game.checkGameOver();
-    console.log("draw is called");
-    console.log(game.pauseLoop);
     if(game.pauseLoop === false) {
         loop();
-        console.log("loop path is called")
     } else {
         noLoop();
-        console.log("the path with no loop is called")
     }
 }
 
