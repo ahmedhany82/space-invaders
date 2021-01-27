@@ -1,8 +1,8 @@
 class Player {
     constructor() {
         this.image;
-        this.imageHeight = 100;
-        this.imageWidth = 100;
+        this.imageHeight = 150;
+        this.imageWidth = 120;
         this.x = WIDTH/2;
         this.y = HEIGHT - this.imageHeight;
         this.lives = 3;
@@ -24,7 +24,7 @@ class Player {
     }
 
     draw() {
-        image(this.image, this.x, this.y, this.imageHeight, this.imageWidth);
+        image(this.image, this.x, this.y, this.imageWidth, this.imageHeight);
 
         if (keyIsDown(LEFT_ARROW)) {
             this.moveLeft();
@@ -49,7 +49,7 @@ class Player {
     }
 
     fireMissile() {
-        let missile = new Missile(this.x + (this.imageWidth / 2) - 10, this.y + (this.imageHeight / 2));
+        let missile = new Missile(this.x + (this.imageWidth / 2) - 10, this.y);
         missile.preload();
         this.sound.play();
         game.missiles.push(missile);

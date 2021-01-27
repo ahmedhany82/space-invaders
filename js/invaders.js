@@ -3,8 +3,8 @@ class Invader {
         this.x = x;
         this.y = y;
         this.image;
-        this.imageHeight = 50;
-        this.imageWidth = 50;
+        this.imageHeight = 60;
+        this.imageWidth = 60;
         this.direction = (this.x >= (WIDTH*2/3))  ? 1 : -1;
         this.speed = speed;
         this.sound;
