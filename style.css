@@ -8,16 +8,15 @@ body {
 
 .title {
     color: var(--bs-white);
-    margin-top: 200px;
+    margin-top: 70px;
     margin-left: 100px;
-    font-size: 120px;
 }
 
 .btn {
-    width: 30%;
+    width: 25%;
     position: relative;
-    top: 900px;
-    margin-left: 150px;
+    top: 420px;
+    margin-left: 60px;
  }
 
 .text {

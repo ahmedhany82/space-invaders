@@ -6,7 +6,7 @@ body {
 }
 
 #sketch-holder #defaultCanvas0{
-  border: 20px solid rgba(252, 254, 255, 0.637);
+  border: 5px solid rgba(252, 254, 255, 0.637);
 }
 
 .container {
@@ -15,8 +15,8 @@ body {
   width: 100%;
 }
 
-.game h1 {
-  margin-top: 50px;
+.game h2 {
+  margin-top: 30px;
 }
 
 .game {
@@ -28,15 +28,16 @@ body {
 
 .updated-info {
   width: 100%;
-  margin-top: 50px;
+  margin-top: 30px;
+  margin-bottom: 0px;
   display: flex;
-  justify-content: space-evenly;
+  justify-content: space-around;
 }
 
 .radio-controls {
-  margin-top: 200px;
+  margin-top: 150px;
   width: 50%;
-  font-size: 30px;
+  /* font-size: 30px; */
 }
 
 .controls {
@@ -46,9 +47,20 @@ body {
   align-items: center;
 }
 
+.level {
+  font-size: 16px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.ship {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
 .card-body {
   color: black;
-  font-size: 30px;
+  font-size: 16px;
 }
 
 .card-body h4 {
@@ -60,9 +72,9 @@ body {
 }
 
 .continue-button {
-  font-size: 25px;
+  font-size: 16px;
 }
 
 .timer {
-  margin-top: 150px;
+  margin-top: 100px;
 }

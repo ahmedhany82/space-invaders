@@ -1,8 +1,8 @@
 class Player {
     constructor() {
         this.image;
-        this.imageHeight = 150;
-        this.imageWidth = 120;
+        this.imageHeight = 60; //75; //150
+        this.imageWidth = 50; //60; //120
         this.x = WIDTH/2;
         this.y = HEIGHT - this.imageHeight;
         this.lives = 3;
@@ -28,6 +28,7 @@ class Player {
 
         if (keyIsDown(LEFT_ARROW)) {
             this.moveLeft();
+            
         }
         if (keyIsDown(RIGHT_ARROW)) {
             this.moveRight();
@@ -53,5 +54,14 @@ class Player {
         missile.preload();
         this.sound.play();
         game.missiles.push(missile);
+    }
+
+    changeSpaceShip(n) {
+        if(n === 0)
+        {
+            this.image = loadImage("images/SeekPng.com_space-ship-png_1581234.png");
+        } else {
+            this.image = loadImage("images/SeekPng.com_spaceship-sprite-png_3370143.png");
+        }
     }
 }

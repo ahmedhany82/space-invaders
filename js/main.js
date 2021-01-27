@@ -14,9 +14,7 @@ function setup() {
 function draw() {
     game.draw();  
     game.checkGameOver();
-    if(game.pauseLoop === false) {
-        loop();
-    } else {
+    if(game.pauseLoop === true) {
         noLoop();
     }
 }

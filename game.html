@@ -20,20 +20,22 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-sm d-flex justify-content-center align-items-start">
-          <h2 class="timer display-4">Duration : <span>00:00</span></h2>
+          <!-- <h2 class="timer display-4">Duration : <span>00:00</span></h2> -->
+          <h5 class="timer">Duration : <span>00:00</span></h5>
         </div>
         <div class="col-sm">
           <div class = "game">
-            <h1 class="title display-1">Space Invaders game</h1>
+            <!-- <h1 class="title display-2">Space Invaders game</h1> -->
+            <h2 class="title">Space Invaders</h4>
             <div class = "updated-info">
               <div class="missed">
-                <h2>Invaders Missed : <span>0</span></h2>
+                <h5>Invaders Missed : <span>0</span></h5>
               </div>
               <div class="lives">
-                <h2>Lives : <span>3</span></h2>
+                <h5>Lives : <span>3</span></h5>
               </div>
               <div class="score">
-                <h2>Score : <span>0</span></h2>
+                <h5>Score : <span>0</span></h5>
               </div>
             </div>
             <div id="sketch-holder">
@@ -43,31 +45,46 @@
         </div>
         <div class="col-sm controls" >
           <div class = "radio-controls">
-            <h2>Choose Difficulty Level</h2>
+            <h5>Choose Difficulty Level</h5>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="exampleRadios" id="levelSelector1" value="option1" checked>
               <label class="form-check-label" for="levelSelector1">
-                Easy
+                <span class="level">Easy</span>
               </label>
             </div>
             <div class="form-check">
               <input class="form-check-input" type="radio" name="exampleRadios" id="levelSelector2" value="option2">
               <label class="form-check-label" for="levelSelector2">
-                Medium
+                <span class="level">Medium</span>
               </label>
             </div>
             <div class="form-check">
-              <input class="form-check-input" type="radio" name="exampleRadios" id="levelSelector3" value="option2">
+              <input class="form-check-input" type="radio" name="exampleRadios" id="levelSelector3" value="option3">
               <label class="form-check-label" for="levelSelector3">
-                Hard
+                <span class="level">Hard</span>
               </label>
             </div>            
-          </div>  
+          </div>
+          <div class = "spaceship radio-controls">
+            <h5>Select your SpaceShip</h5>
+            <div class="form-check">
+              <input class="spaceship1 form-check-input" type="radio" name="ShipRadios" id="ShipSelector1" value="option1" checked>
+              <label class="form-check-label" for="ShipSelector1">
+                <img class="ship" src="images/SeekPng.com_space-ship-png_1581234.png" style="width:40px;height:50px">
+              </label>
+            </div>
+            <div class="form-check">
+              <input class="spaceship2 form-check-input" type="radio" name="ShipRadios" id="ShipSelector2" value="option2">
+              <label class="form-check-label" for="ShipSelector2">
+                <img class="ship" src="images/SeekPng.com_spaceship-sprite-png_3370143.png" style="width:40px;height:50px">
+              </label>
+            </div>        
+          </div>   
         </div>
       </div>  
       <!-- used from https://bbbootstrap.com/snippets/congratulation-modal-card-73359518-->
       <div class="modal fade" id="myLosingModal" role="dialog">
-          <div class="modal-dialog modal-lg modal-dialog-centered">
+          <div class="modal-dialog modal-dialog-centered">
               <div class="card">
                   <div class="text-right cross"> <i class="fa fa-times"></i> </div>
                   <div class="card-body text-center"> <img src="images/SeekPng.com_space-png_139338_resized.png">
@@ -83,7 +100,7 @@
                 <div class="text-right cross"> <i class="fa fa-times"></i> </div>
                 <div class="card-body text-center"> <img src="https://img.icons8.com/bubbles/200/000000/trophy.png">
                     <h4>CONGRATULATIONS!</h4>
-                    <p>You have scored <span class="winscore"> 0</span>! Good job!! Press Enter to play again.</p> <button class="btn btn-out btn-square continue"><span class="continue-button">CONTINUE</span></button>
+                    <p>You have scored <span class="winscore"> 0</span>. Good job! Press Enter to play again.</p> <button class="btn btn-out btn-square continue"><span class="continue-button">CONTINUE</span></button>
                 </div>
             </div>
         </div>

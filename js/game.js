@@ -9,12 +9,14 @@ class Game {
         this.gameOverFlag = false;
         this.makeVisible = true;
         this.selectedLevel = 1;
-        this.invadersSpeed = 5;
+        this.invadersSpeed = 2;
         this.playerExplosion;
         this.decrementLivesFlag = 0;
         this.pauseLoop = false;
         this.gameDuration = 30; //1 minute
         this.countDownID;
+        this.selectedShip = 0;
+        this.selectedShipPrev = 0;
     }
 
     preload() {
@@ -56,12 +58,22 @@ class Game {
         this.checkSelectedLevel();
         
         this.detectCollision();
+
+        this.checkSelectedSpaceShip();
+
+        if(this.selectedShip !== this.selectedShipPrev) {
+            this.player.changeSpaceShip(this.selectedShip);
+        }
+
+        this.selectedShipPrev = this.selectedShip;
     }
 
     handleKey(keyCode) {
         if (keyCode === 32) this.player.fireMissile();
         if ( (keyCode === 13) && (this.gameOverFlag === true) ) {
             console.log("Enter Key is pressed.")
+            $('#myWinningModal').modal('hide');
+            $('#myLosingModal').modal('hide');
             this.invaders = [];
             this.missedInvaders = 0;
             document.querySelector('.missed').querySelector("span").innerText = this.missedInvaders;
@@ -210,15 +222,24 @@ class Game {
         if(document.querySelector('#levelSelector1').checked)
         {
             this.selectedLevel = 1;
-            this.invadersSpeed = 5;
+            this.invadersSpeed = 2;
         } else {
             if(document.querySelector('#levelSelector2').checked) {
                 this.selectedLevel = 2;
-                this.invadersSpeed = 8;
+                this.invadersSpeed = 4;
             } else {
                 this.selectedLevel = 3;
-                this.invadersSpeed = 10;
+                this.invadersSpeed = 6;
             }
+        }
+    }
+
+    checkSelectedSpaceShip() {
+        if(document.querySelector('#ShipSelector1').checked)
+        {
+            this.selectedShip = 0;
+        } else {
+            this.selectedShip = 1;
         }
     }
 }
