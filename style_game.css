@@ -1,14 +1,7 @@
 body {
-  /*display: flex;
-  justify-content: center;
-  flex-direction: column;
-  align-items: center;*/
-  /*font-family: "Spartan", sans-serif;*/
-  /*background-color: #c8dad3;*/
   background-image: url("images/invaders.png");
   background-repeat: no-repeat;
   background-size: cover;
-  /*background-position: right top*/
   color: white;
 }
 
@@ -73,4 +66,3 @@ body {
 .timer {
   margin-top: 150px;
 }
-/**/

@@ -15,7 +15,6 @@ class Missile {
     }
 
     draw() {
-        //console.log("Missile draw() is called")
         image(this.image, this.x, this.y, this.imageWidth, this.imageHeight);
     }
 }

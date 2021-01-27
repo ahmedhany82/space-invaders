@@ -5,7 +5,7 @@ class Player {
         this.imageWidth = 100;
         this.x = WIDTH/2;
         this.y = HEIGHT - this.imageHeight;
-        this.lives = 3;  //# of lives to decrement with each hit
+        this.lives = 3;
         this.sound;
         this.score = 0;
     }
@@ -19,12 +19,8 @@ class Player {
         /* https://www.seekpng.com/png/full/337-3370143_spaceship-sprite-png.png */
         //this.image = loadImage("images/SeekPng.com_spaceship-sprite-png_3370143.png");
         
-
-        http://www.classicgaming.cc/classics/space-invaders/files/sounds/shoot.zip
-        //this.sound = createAudio('Sounds/shoot.wav');
         //https://opengameart.org/content/lasershootingsx
         this.sound = createAudio('Sounds/laser_shooting_sfx.wav');
-        //console.log("preload is called")
     }
 
     draw() {
@@ -56,6 +52,6 @@ class Player {
         let missile = new Missile(this.x + (this.imageWidth / 2) - 10, this.y + (this.imageHeight / 2));
         missile.preload();
         this.sound.play();
-        game.missiles.push(missile);  //ToDo: adjust the position to the center of the spaceship
+        game.missiles.push(missile);
     }
 }

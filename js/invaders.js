@@ -5,7 +5,6 @@ class Invader {
         this.image;
         this.imageHeight = 50;
         this.imageWidth = 50;
-        //this.direction = Math.floor(Math.random() * 2) === 0 ? 1 : -1;
         this.direction = (this.x >= (WIDTH*2/3))  ? 1 : -1;
         this.speed = speed;
         this.sound;
@@ -36,8 +35,6 @@ class Invader {
                 this.image = loadImage("images/magenta_invader.png");
                 break;
         }
-        //this.sound = createAudio("Sounds/shoot.wav");
-        //this.image = loadImage("images/SeekPng.com_space-invader-png_1925983.png");
     }
 
     draw() {
@@ -45,8 +42,6 @@ class Invader {
     }
 
     moveInvader() {
-        // this.y += INVADER_SPEED;
-        // this.x += (INVADER_SPEED * this.direction);
         this.y += this.speed;
         this.x += (this.speed * this.direction);
 
@@ -57,16 +52,13 @@ class Invader {
     bounceOffEdges() {
         if( (this.x + this.imageWidth) >= WIDTH || this.x <= 0) {
             this.direction *= -1;
-            //this.x += (8*INVADER_SPEED * this.direction); //to prevent getting stuck in the if-condition
             this.x += (8*this.speed * this.direction); //to prevent getting stuck in the if-condition
-            //this.sound.play();
         }
     }
 
     bounceAtSetHeight() {
         if(Math.abs(this.y - 450) < 5 ) {
             this.direction *= -1;
-            //this.speed -= 1;
         }
     }
 }

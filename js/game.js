@@ -18,20 +18,16 @@ class Game {
     }
 
     preload() {
-        //this.backgroundimage = loadImage('https://images.unsplash.com/photo-1505506874110-6a7a69069a08?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=634&q=80');
         this.backgroundimage.preload();
         this.player.preload();
         //http://www.classicgaming.cc/classics/space-invaders/files/sounds/invaderkilled.zip
         this.invaderKilledSound = createAudio('Sounds/invaderkilled.wav');
         http://www.classicgaming.cc/classics/space-invaders/files/sounds/explosion.zip
         this.playerExplosion = createAudio('Sounds/explosion.wav');
-        //let ele = createAudio('Sounds/spaceinvaders1.mpeg');
-        //ele.play();
         this.countDown(this.gameDuration);
     }
 
     draw() {
-        //1image(this.backgroundimage, 0, 0, WIDTH, HEIGHT)
         clear();
         this.backgroundimage.draw();
 
@@ -40,11 +36,7 @@ class Game {
             this.player.draw();
         }
 
-        //console.log(frameCount % 50)
         if (frameCount % (Math.floor(50 / this.selectedLevel)) === 0) {
-            // if(this.invaders.length < 5) {   /* Limit invaders by 10 for testing to avoid crashing to be removed after implementing filterInvaders() */
-            //      this.addInvaders();
-            //  }
             this.addInvaders();
         }
         for (let missile of this.missiles) {
@@ -87,13 +79,11 @@ class Game {
     moveMissiles() {
         for(let missile of this.missiles) {
             missile.y -= MISSILE_SPEED;
-            //console.log(missile.x, missile.y);
         }   
     }
 
     addInvaders() {
         let x = (Math.floor(Math.random() * WIDTH));
-        //let x = Math.floor(Math.random() * 2) ? (Math.floor(Math.random() * (WIDTH/3))) : (WIDTH*2/3) + (Math.floor(Math.random() * (WIDTH/3)))
         let y = 5;
         let invader = new Invader(x,y,this.invadersSpeed);
         invader.preload(Math.floor(Math.random() * 6));
@@ -101,16 +91,12 @@ class Game {
     }
 
     moveInvaders() {
-        // ToDo create a method in the invaders class to move an invader and call it here in each iteration.
         for(let invader of this.invaders) {
-            //invader.y += INVADER_SPEED;
             invader.moveInvader();
-            //console.log(missile.x, missile.y);
         }    
     }
 
     filterMissiles() {
-        //ToDo remove missiles that leave the screen
         this.missiles = this.missiles.filter((missile) => {
 
             if (missile.y < 0) {
@@ -124,7 +110,6 @@ class Game {
 
     filterInvaders() {
         this.invaders = this.invaders.filter((invader) => {
-
             if (invader.y > HEIGHT) {
                 this.missedInvaders++;
                 document.querySelector('.missed').querySelector("span").innerText = this.missedInvaders;
@@ -132,13 +117,10 @@ class Game {
             } else {
                 return true;
             }
-
         })
     }
 
-    filterHits() {
-        //ToDo detect the invaders that are hit and remove the missile and invader, update this.hitcount which is read by the score function 
-        
+    filterHits() {       
             for(let i=0; i<this.missiles.length; i++) {
                 let missileX = this.missiles[i].x + this.missiles[i].imageWidth / 2;
                 let missileY = this.missiles[i].y + this.missiles[i].imageHeight / 2;
@@ -154,7 +136,6 @@ class Game {
                         this.invaders.splice(j,1);
                         this.player.score++;
                         document.querySelector(".score").querySelector("span").innerText = this.player.score;
-                        //ToDo increment score
                     }
             }
         }
@@ -163,18 +144,14 @@ class Game {
 
     checkGameOver() {
         if( (this.missedInvaders === 50 || this.player.lives === 0) && this.gameOverFlag === false) {
-            //noLoop();
             this.pauseLoop = true;
-            //window.alert("Game Over!! You missed 50 invaders!!");
             this.gameOverFlag = true;
-            //window.alert("Game Over!! You missed 50 invaders!!")
             clearInterval(this.countDownID);
             $('#myLosingModal').modal('show');
         } 
     }
 
     detectCollision() {
-        //ToDo detects collisions between spaceship and invaders and calls a player function to decrement lives
         let playerX = this.player.x + this.player.imageWidth / 2;
         let playerY = this.player.y + this.player.imageHeight / 2;
         
@@ -209,7 +186,6 @@ class Game {
         console.log("countDown is called")
         let timer = duration;
         let minutes, seconds;
-        //const id = setInterval(() => {
         this.countDownID = setInterval(() => {
             minutes = parseInt(timer / 60, 10);
             seconds = parseInt(timer % 60, 10);
@@ -218,12 +194,11 @@ class Game {
             seconds = seconds < 10 ? "0" + seconds : seconds;
     
             document.querySelector('.timer').querySelector('span').innerText = minutes + ":" + seconds;
-            //this.displayedTime = minutes + ":" + seconds;
             timer--;
     
             if (timer < 0) {
                 clearInterval(this.countDownID);
-                this.pauseLoop = true; //test
+                this.pauseLoop = true;
                 this.gameOverFlag = true;
                 document.querySelector('.winscore').innerText = this.player.score;
                 $('#myWinningModal').modal('show');
