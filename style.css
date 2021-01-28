@@ -1,24 +1,57 @@
 body {
-    /* font-family: "Spartan", sans-serif; */
-    /*background-color: #c8dad3;*/
-    background-image: url("images/wallpaper-space-invaders-real-3d-1920x1080.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    color: white;
+    overflow-y: hidden;
+}
+
+.container-fluid {
+    padding-top: 20px;
+    padding-bottom: 20px;
+  }
+
+img {
+    z-index: 0;
+    position: absolute;
+    top: 0px;
+    min-height: 100%
 }
 
 .title {
-    color: var(--bs-white);
-    margin-top: 70px;
-    margin-left: 100px;
+    color: white;
+    padding-left: 50px;
+    z-index: 1;
 }
 
-.btn {
-    width: 25%;
-    position: relative;
-    top: 420px;
-    margin-left: 60px;
- }
+.col {
+    z-index: 1;
+}
 
 .text {
-   text-align: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    padding-top: 80px;
+    padding-bottom: 180px;
+ }
+
+ .bottom-text {
+     width: 80%;
+     height: 20%;
+     display: flex;
+     flex-direction: column;
+     justify-content: space-between;
+     align-items: center;
+     padding-left: 85px;
+ }
+
+.instructions {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
+}
+
+.startbutton {
+    text-align: center;
+    width: 100%;
+    margin-top: 20px;
 }
