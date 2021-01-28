@@ -46,7 +46,7 @@ class Invader {
         this.x += (this.speed * this.direction);
 
         this.bounceOffEdges();
-        this.bounceAtSetHeight();
+        //this.bounceAtSetHeight();
     }
 
     bounceOffEdges() {
