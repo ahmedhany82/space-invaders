@@ -52,7 +52,7 @@ class Invader {
     bounceOffEdges() {
         if( (this.x + this.imageWidth) >= WIDTH || this.x <= 0) {
             this.direction *= -1;
-            this.x += (8*this.speed * this.direction); //to prevent getting stuck in the if-condition
+            this.x += (15*this.speed * this.direction); //to prevent getting stuck in the if-condition
         }
     }
 
