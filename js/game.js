@@ -13,10 +13,12 @@ class Game {
         this.playerExplosion;
         this.decrementLivesFlag = 0;
         this.pauseLoop = false;
-        this.gameDuration = 60; //1 minute
+        this.gameDuration = 20; //1 minute
         this.countDownID;
         this.selectedShip = 0;
         this.selectedShipPrev = 0;
+        this.addInvadersFlag = true;
+        this.gameisWon = false;
     }
 
     preload() {
@@ -71,22 +73,59 @@ class Game {
     handleKey(keyCode) {
         if (keyCode === 32) this.player.fireMissile();
         if ( (keyCode === 13) && (this.gameOverFlag === true) ) {
-            console.log("Enter Key is pressed.")
-            $('#myWinningModal').modal('hide');
-            $('#myLosingModal').modal('hide');
-            this.invaders = [];
-            this.missedInvaders = 0;
-            document.querySelector('.missed').querySelector("span").innerText = this.missedInvaders;
-            this.player.score = 0;
-            document.querySelector(".score").querySelector("span").innerText = this.player.score;
-            this.player.lives = 3;
-            document.querySelector(".lives").querySelector("span").innerText = this.player.lives;
-            this.pauseLoop = false;
-            this.gameOverFlag = false;
-            this.countDown(this.gameDuration);
-            loop();
+            this.resetGame();
+            this.resumeGame()
         }
     }
+
+    resetGame() {
+        this.addInvadersFlag = false;
+        $('#myWinningModal').modal('hide');
+        $('#myLosingModal').modal('hide');
+        $('#myNextLevelModal').modal('hide');
+        this.missedInvaders = 0;
+        document.querySelector('.missed').querySelector("span").innerText = this.missedInvaders;
+        // if(this.gameisWon === false)
+        // {
+        //     this.player.score = 0;
+        //     document.querySelector(".score").querySelector("span").innerText = this.player.score;    
+        // }
+        this.player.lives = 3;
+        document.querySelector(".lives").querySelector("span").innerText = this.player.lives;
+        this.countDown(this.gameDuration);
+        this.invaders = [];
+        this.pauseLoop = false;
+        this.gameOverFlag = false;
+    }
+
+    resumeGame() {
+        if(this.gameisWon === true && this.selectedLevel < 3 && this.invadersSpeed < 6) {
+            this.selectedLevel += 1;
+            this.invadersSpeed += 2;
+            if(this.selectedLevel === 2) {
+                document.querySelector('#levelSelector2').checked = true;
+            } else if(this.selectedLevel === 3) {
+                document.querySelector('#levelSelector3').checked = true;
+            } else {
+                document.querySelector('#levelSelector1').checked = true;
+            }
+        } else {
+            if(this.gameisWon === true && this.selectedLevel === 3) {
+                this.gameisWon = false;
+                this.selectedLevel = 1;
+                this.invadersSpeed = 2;
+                document.querySelector('#levelSelector1').checked = true;
+            }
+        }
+        if(this.gameisWon === false)
+        {
+             this.player.score = 0;
+             document.querySelector(".score").querySelector("span").innerText = this.player.score;    
+        }
+        this.addInvadersFlag = true;
+        loop();
+    }    
+
 
     moveMissiles() {
         for(let missile of this.missiles) {
@@ -95,11 +134,14 @@ class Game {
     }
 
     addInvaders() {
-        let x = (Math.floor(Math.random() * WIDTH));
-        let y = 5;
-        let invader = new Invader(x,y,this.invadersSpeed);
-        invader.preload(Math.floor(Math.random() * 6));
-        this.invaders.push(invader);
+        if(this.addInvadersFlag === true)
+        {
+            let x = (Math.floor(Math.random() * WIDTH));
+            let y = 5;
+            let invader = new Invader(x,y,this.invadersSpeed);
+            invader.preload(Math.floor(Math.random() * 6));
+            this.invaders.push(invader);    
+        }
     }
 
     moveInvaders() {
@@ -110,13 +152,11 @@ class Game {
 
     filterMissiles() {
         this.missiles = this.missiles.filter((missile) => {
-
             if (missile.y < 0) {
                 return false;
             } else {
                 return true;
             }
-
         })
     } 
 
@@ -158,6 +198,7 @@ class Game {
         if( (this.missedInvaders === 50 || this.player.lives === 0) && this.gameOverFlag === false) {
             this.pauseLoop = true;
             this.gameOverFlag = true;
+            this.gameisWon = false;
             clearInterval(this.countDownID);
             $('#myLosingModal').modal('show');
         } 
@@ -212,8 +253,14 @@ class Game {
                 clearInterval(this.countDownID);
                 this.pauseLoop = true;
                 this.gameOverFlag = true;
-                document.querySelector('.winscore').innerText = this.player.score;
-                $('#myWinningModal').modal('show');
+                document.querySelector('.winscore').innerText = this.player.score; 
+                document.querySelector('.nextlevelscore').innerText = this.player.score;
+                if(this.selectedLevel === 3) {
+                    $('#myWinningModal').modal('show');
+                } else  {
+                    $('#myNextLevelModal').modal('show');
+                }
+                this.gameisWon = true;
             }
         }, 1000);
     }

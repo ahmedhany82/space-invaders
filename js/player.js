@@ -50,7 +50,7 @@ class Player {
     }
 
     fireMissile() {
-        let missile = new Missile(this.x + (this.imageWidth / 2) - 10, this.y);
+        let missile = new Missile(this.x + (this.imageWidth / 2) - 5, this.y - 20);
         missile.preload();
         this.sound.play();
         game.missiles.push(missile);
