@@ -13,7 +13,7 @@ class Game {
         this.playerExplosion;
         this.decrementLivesFlag = 0;
         this.pauseLoop = false;
-        this.gameDuration = 20; //1 minute
+        this.gameDuration = 40; //1 minute
         this.countDownID;
         this.selectedShip = 0;
         this.selectedShipPrev = 0;
